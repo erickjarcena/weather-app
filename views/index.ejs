@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/src/styles.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Weather Application</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand title" href="/">Weather App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/">Home</a>
+            <a class="nav-item nav-link" href="/">About Us</a>
+          </div>
+        </div>
+      </nav>
+      <div class="container region">
+        <div class="region-container align-items-center"> 
+            <h1>Weather Reports</h1>
+            <form action="/" method="post">
+                <label for="province">Province:</label>
+                <select name="province" id="province">
+                  <option value="COM">Davao de Oro</option>
+                  <option value="DAV">Davao del Norte</option>
+                  <option value="DAS">Davao del Sur</option>
+                  <option value="SAR">Sarangani</option>
+                  <option value="DAO">Davao Oriental</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Location</th>
+                  <th scope="col">Temperature</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Humidity</th>
+                  <th scope="col">Wind</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                <% for(var i=0; i < weatherUpdate.length; i++) { %>
+                  <tr>
+                    <td><%= weatherUpdate[i].location %></td>
+                    <td><%= weatherUpdate[i].temp %><span>°C</span></td>
+                    <td><%= weatherUpdate[i].desc %></td>
+                    <td><%= weatherUpdate[i].humidity %><span>%</span></td>
+                    <td><%= weatherUpdate[i].wind %><span>m/s</span></td>
+                  </tr>
+               <% } %>
+              </tbody>
+            </table>  
+              
+              
+        </div>
+      </div>
+</body>
+</html>
