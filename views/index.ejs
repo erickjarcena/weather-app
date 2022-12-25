@@ -22,17 +22,15 @@
       </nav>
       <div class="container region">
         <div class="region-container align-items-center"> 
-            <h1>Weather Reports</h1>
-            <form action="/" method="post">
+            <h1 class="text-center"><%= currentTimeandProv.province %> <br> <%= currentTimeandProv.time %></h1>
+            <form class="text-center" action="/" method="post">
                 <label for="province">Province:</label>
                 <select name="province" id="province">
-                  <option value="COM">Davao de Oro</option>
-                  <option value="DAV">Davao del Norte</option>
-                  <option value="DAS">Davao del Sur</option>
-                  <option value="SAR">Sarangani</option>
-                  <option value="DAO">Davao Oriental</option>
-                </select>
-                <button type="submit">Search</button>
+                  <% for (var index = 0; index < provinceData.length; index++) { %>
+                      <option value="<%= provinceData[index].key %>"> <%= provinceData[index].name %></option>
+                  <% } %>
+              </select>
+                <button type="submit" class="btn btn-dark">Search</button>
             </form>
             <table class="table">
               <thead>
@@ -44,21 +42,18 @@
                   <th scope="col">Wind</th>
                 </tr>
               </thead>
-              
               <tbody>
-                <% for(var i=0; i < weatherUpdate.length; i++) { %>
+                <% for(var index = 0; index < weatherUpdate.length; index++) { %>
                   <tr>
-                    <td><%= weatherUpdate[i].location %></td>
-                    <td><%= weatherUpdate[i].temp %><span>°C</span></td>
-                    <td><%= weatherUpdate[i].desc %></td>
-                    <td><%= weatherUpdate[i].humidity %><span>%</span></td>
-                    <td><%= weatherUpdate[i].wind %><span>m/s</span></td>
+                    <td><%= weatherUpdate[index].location %></td>
+                    <td><%= weatherUpdate[index].temp %><span>°C</span></td>
+                    <td><%= weatherUpdate[index].desc %></td>
+                    <td><%= weatherUpdate[index].humidity %><span>%</span></td>
+                    <td><%= weatherUpdate[index].wind %><span>m/s</span></td>
                   </tr>
                <% } %>
               </tbody>
-            </table>  
-              
-              
+            </table> 
         </div>
       </div>
 </body>
